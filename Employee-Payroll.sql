@@ -18,8 +18,8 @@ CREATE TABLE Employee_Payroll(
 --CRUD Operations
 -- UC 3: Insert Records
 
-INSERT INTO Employee_Payroll 
+INSERT INTO Employee_Payroll (Name, Salary, Start_Date)
 VALUES 
-	('Chris Evans', 55000.23, '01-04-2022'),
-	('Paul Rudd', 55000.23, '06-04-1969'),
-	('Sebastian Stan', 55000.23, '13-08-1982');
+	('Chris Evans', 55000.23, '2022-04-01'),
+	('Paul Rudd', 43789.70, '2018-06-04'),
+	('Sebastian Stan', 67834.10, '2013-03-08');
