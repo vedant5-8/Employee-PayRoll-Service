@@ -23,3 +23,7 @@ VALUES
 	('Chris Evans', 55000.23, '2022-04-01'),
 	('Paul Rudd', 43789.70, '2018-06-04'),
 	('Sebastian Stan', 67834.10, '2013-03-08');
+
+-- UC 4: retrieve all the employee payroll table
+
+SELECT * FROM Employee_Payroll;
