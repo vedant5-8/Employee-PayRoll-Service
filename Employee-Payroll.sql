@@ -14,5 +14,3 @@ CREATE TABLE Employee_Payroll(
 	Salary FLOAT,
 	Start_Date DATE
 );
-
-SELECT * FROM Employee_Payroll;
