@@ -4,7 +4,7 @@ CREATE DATABASE Payroll_Service;
 
 SELECT name FROM sys.databases;
 
-use Payroll_Service;
+USE Payroll_Service;
 
 -- UC 2: create employee payroll table
 /*
@@ -27,3 +27,11 @@ VALUES
 -- UC 4: retrieve all the employee payroll table
 
 SELECT * FROM Employee_Payroll;
+
+-- UC 5: retrive salary data from particular employee
+
+SELECT Salary FROM Employee_Payroll
+WHERE Name = 'Paul Rudd';
+
+SELECT * FROM Employee_Payroll 
+WHERE Start_Date BETWEEN CAST('2018-01-01' AS DATE) AND GETDATE();
