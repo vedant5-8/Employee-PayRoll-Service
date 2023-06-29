@@ -118,3 +118,8 @@ ADD Income_Tax FLOAT;
 
 ALTER TABLE Employee_Payroll
 ADD Net_Pay FLOAT;
+
+-- UC 10: Terissa as part of Sales and Marketing Department and insert other data
+
+INSERT INTO Employee_Payroll VALUES 
+('Terisa', 13000000, '2022-04-01', 'F', '8796453120', 'Adelaide', 'Marketing', 3000000.00, 1000000.00, 2000000.00, 500000.00, 15000000.00);
