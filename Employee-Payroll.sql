@@ -102,3 +102,19 @@ UPDATE Employee_Payroll
 SET Phone = '8526547539', Address = 'London', Department = 'Production'
 WHERE ID = 5;
 
+--UC 9: extend employee_payroll data to store employee information like Basic Pay, Deductions, Taxable Pay, Income Tax, Net Pay
+
+ALTER TABLE Employee_Payroll
+ADD Basic_Pay FLOAT;
+
+ALTER TABLE Employee_Payroll
+ADD Deductions FLOAT;
+
+ALTER TABLE Employee_Payroll
+ADD Taxable_Pay FLOAT;
+
+ALTER TABLE Employee_Payroll
+ADD Income_Tax FLOAT;
+
+ALTER TABLE Employee_Payroll
+ADD Net_Pay FLOAT;
