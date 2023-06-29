@@ -70,3 +70,35 @@ GROUP BY Gender;
 SELECT COUNT(Gender) AS Count_Females FROM Employee_Payroll
 WHERE Gender = 'F'
 GROUP BY Gender;
+
+--UC 8: extend employee_payroll data to store employee information like employee phone, address and department
+
+ALTER TABLE Employee_Payroll
+ADD Phone VARCHAR(255);
+
+ALTER TABLE Employee_Payroll
+ADD Address VARCHAR(255);
+
+ALTER TABLE Employee_Payroll
+ADD Department VARCHAR(255);
+
+UPDATE Employee_Payroll 
+SET Phone = '9513578526', Address = 'Boston', Department = 'IT'
+WHERE ID = 1;
+
+UPDATE Employee_Payroll 
+SET Phone = '8523579515', Address = 'New Jersey', Department = 'HR'
+WHERE ID = 2;
+
+UPDATE Employee_Payroll 
+SET Phone = '9632587410', Address = 'Romania', Department = 'R&D'
+WHERE ID = 3;
+
+UPDATE Employee_Payroll 
+SET Phone = '9842365402', Address = 'California', Department = 'Sales'
+WHERE ID = 4;
+
+UPDATE Employee_Payroll 
+SET Phone = '8526547539', Address = 'London', Department = 'Production'
+WHERE ID = 5;
+
