@@ -123,3 +123,6 @@ ADD Net_Pay FLOAT;
 
 INSERT INTO Employee_Payroll VALUES 
 ('Terisa', 13000000, '2022-04-01', 'F', '8796453120', 'Adelaide', 'Marketing', 3000000.00, 1000000.00, 2000000.00, 500000.00, 15000000.00);
+
+SELECT * FROM Employee_Payroll
+WHERE Name = 'Terisa';
