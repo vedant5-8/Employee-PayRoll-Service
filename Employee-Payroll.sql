@@ -126,3 +126,75 @@ INSERT INTO Employee_Payroll VALUES
 
 SELECT * FROM Employee_Payroll
 WHERE Name = 'Terisa';
+
+--ER Diagram
+
+-- UC 11: Implement the ER Diagram into Payroll Service DB
+
+CREATE TABLE Company (
+	CompId INT IDENTITY(1,1) PRIMARY KEY,
+	CompName VARCHAR(70)
+);
+
+INSERT INTO Company VALUES ('IBM');
+
+SELECT * FROM Company;
+
+CREATE TABLE Department (
+	DeptId INT IDENTITY(1,1) PRIMARY KEY,
+	DeptName VARCHAR(100),
+	CompId INT FOREIGN KEY REFERENCES Company(CompId)
+);
+
+INSERT INTO Department VALUES
+	('IT', 1),
+	('HR', 1),
+	('Admin', 1);
+
+SELECT * FROM Department;
+
+CREATE TABLE Employee (
+	EmpId INT IDENTITY(1,1) PRIMARY KEY,
+	EmpName VARCHAR(50),
+	PhoneNumber BIGINT,
+	Street VARCHAR(100),
+	City VARCHAR(20),
+	State VARCHAR(20),
+	Gender CHAR(1) CHECK(Gender IN ('M', 'F')),
+	DeptId INT FOREIGN KEY REFERENCES Department(DeptId)
+);
+
+INSERT INTO Employee VALUES
+	('Jack', 8523697410, '220 Sixth St', 'Langley', 'Washington', 'M', 1),
+	('Elizabeth', 8624761943, '5901 S Brawley Ave', 'Fresno', 'California', 'F', 2),
+	('Mike', 9617394500, '66 Strickland St', 'Bay Head', 'New Jersey', 'M', 3),
+	('James', 8392681203, '1204 E 91st St', 'Brooklyn', 'New York', 'M', 1);
+
+--INSERT INTO Employee VALUES ('Cathy', 8852003070, );
+
+SELECT * FROM Employee;
+
+CREATE TABLE Payroll (
+	EmpId INT FOREIGN KEY REFERENCES Employee(EmpId),
+	BasicPay DECIMAL(10,2),
+    Deduction DECIMAL(10,2),
+    TaxablePay DECIMAL(10,2),
+    IncomeTax DECIMAL(10,2),
+    NetPay AS (BasicPay - Deduction - IncomeTax)
+);
+
+INSERT INTO Payroll VALUES
+	(1, 50000.00, 5000.00, 45000.00, 5000.00),
+	(2, 60000.00, 6000.00, 54000.00, 6000.00),
+	(3, 55000.00, 5500.00, 49500.00, 5500.00),
+	(4, 65000.00, 6500.00, 58500.00, 6500.00);
+
+SELECT * FROM Payroll;
+
+SELECT 
+	e.EmpId, e.EmpName, p.BasicPay, 
+	p.Deduction, p.TaxablePay, p.IncomeTax, p.NetPay 
+FROM Employee e
+INNER JOIN Payroll p
+ON e.EmpId = p.EmpId;
+
