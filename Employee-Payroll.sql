@@ -170,7 +170,7 @@ INSERT INTO Employee VALUES
 	('Mike', 9617394500, '66 Strickland St', 'Bay Head', 'New Jersey', 'M', 3),
 	('James', 8392681203, '1204 E 91st St', 'Brooklyn', 'New York', 'M', 1);
 
---INSERT INTO Employee VALUES ('Cathy', 8852003070, );
+INSERT INTO Employee VALUES ('Cathy', 8852003070, '807 GA -25', 'Woodbine', 'Georgia', 'F', 3);
 
 SELECT * FROM Employee;
 
@@ -189,6 +189,8 @@ INSERT INTO Payroll VALUES
 	(3, 55000.00, 5500.00, 49500.00, 5500.00),
 	(4, 65000.00, 6500.00, 58500.00, 6500.00);
 
+INSERT INTO Payroll VALUES (5, 75000.00, 7500.00, 68600.00, 7500.00);
+
 SELECT * FROM Payroll;
 
 SELECT 
@@ -198,3 +200,89 @@ FROM Employee e
 INNER JOIN Payroll p
 ON e.EmpId = p.EmpId;
 
+SELECT 
+	e.EmpName, p.NetPay AS Salary
+FROM Employee e
+INNER JOIN Payroll p
+ON e.EmpId = p.EmpId
+WHERE e.EmpName = 'Jack';
+
+-- Sum of all female employess salary
+
+SELECT SUM(p.NetPay) AS Total_Female_Salary
+FROM Employee e INNER JOIN Payroll p
+ON e.EmpId = p.EmpId
+WHERE Gender = 'F'
+GROUP BY Gender;
+
+-- Sum of all male employess salary
+
+SELECT SUM(p.NetPay) AS Total_Male_Salary
+FROM Employee e INNER JOIN Payroll p
+ON e.EmpId = p.EmpId
+WHERE Gender = 'M'
+GROUP BY Gender;
+
+-- Average of all male employess salary
+
+SELECT AVG(p.NetPay) AS Total_Male_Salary
+FROM Employee e INNER JOIN Payroll p
+ON e.EmpId = p.EmpId
+WHERE Gender = 'M'
+GROUP BY Gender;
+
+-- Average of all female employess salary
+
+SELECT AVG(p.NetPay) AS Total_Male_Salary
+FROM Employee e INNER JOIN Payroll p
+ON e.EmpId = p.EmpId
+WHERE Gender = 'F'
+GROUP BY Gender;
+
+-- Mimimum salary of Male Employees
+
+SELECT MIN(p.NetPay) AS Mimimum_Male_Salary
+FROM Employee e INNER JOIN Payroll p
+ON e.EmpId = p.EmpId
+WHERE Gender = 'M'
+GROUP BY Gender;
+
+-- Mimimum salary of Female Employees
+
+SELECT MIN(p.NetPay) AS Mimimum_Male_Salary
+FROM Employee e INNER JOIN Payroll p
+ON e.EmpId = p.EmpId
+WHERE Gender = 'F'
+GROUP BY Gender;
+
+-- Maximum salary of Male Employees
+
+SELECT MAX(p.NetPay) AS Maximum_Male_Salary
+FROM Employee e INNER JOIN Payroll p
+ON e.EmpId = p.EmpId
+WHERE Gender = 'M'
+GROUP BY Gender;
+
+-- Maximum salary of Female Employees
+
+SELECT MAX(p.NetPay) AS Maximum_Male_Salary
+FROM Employee e INNER JOIN Payroll p
+ON e.EmpId = p.EmpId
+WHERE Gender = 'F'
+GROUP BY Gender;
+
+--Count all male employees
+
+SELECT COUNT(p.NetPay) AS Total_Male_Employees
+FROM Employee e INNER JOIN Payroll p
+ON e.EmpId = p.EmpId
+WHERE Gender = 'M'
+GROUP BY Gender;
+
+--Count all female employees
+
+SELECT COUNT(p.NetPay) AS Total_Female_Employees
+FROM Employee e INNER JOIN Payroll p
+ON e.EmpId = p.EmpId
+WHERE Gender = 'F'
+GROUP BY Gender;
